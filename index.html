@@ -36,10 +36,11 @@ body{
 
 <div class="clock-container">
   <div id="clock">00:00:00</div>
+  <div id="date">Loading Date...</div>
 </div>
 
 <script>
-function updateClock(){
+function Clock(){
   let now = new Date();
 
   let h = now.getHours();
@@ -52,10 +53,15 @@ function updateClock(){
   s = s < 10 ? "0"+s : s;
 
   document.getElementById("clock").innerHTML = `${h}:${m}:${s}`;
+
+
+      let options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'};
+  document.getElementById("date").innerHTML = now.toLocaleDateString('en-US', options);
+
 }
 
-setInterval(updateClock, 1000);
-updateClock();
+setInterval(Clock, 1000);
+Clock();
 </script>
 
 </body>
